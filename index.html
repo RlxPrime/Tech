@@ -718,6 +718,39 @@
   }
   .btn-instagram:hover { box-shadow: 0 0 32px rgba(131,58,180,0.55); transform: translateY(-2px); }
 
+  .search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .search-input {
+    background: rgba(0,180,255,0.08);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 10px 40px 10px 16px;
+    border-radius: 10px;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.88rem;
+    width: 220px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s, width .3s;
+  }
+  .search-input:focus {
+    border-color: var(--blue-glow);
+    box-shadow: 0 0 14px rgba(0,180,255,0.25);
+    width: 280px;
+  }
+  .search-input::placeholder { color: var(--gray-mid); }
+  .search-icon {
+    position: absolute;
+    right: 12px;
+    font-size: 1rem;
+    pointer-events: none;
+  }
+  @media (max-width: 768px) {
+    .search-wrap { display: none; }
+  }
+
   /* ─── FOOTER ─── */
   footer {
     background: rgba(0,10,25,0.9);
@@ -986,6 +1019,11 @@
     <a onclick="goHome(); setTimeout(()=>document.getElementById('contato').scrollIntoView({behavior:'smooth'}),100)" style="cursor:pointer">Contato</a>
   </nav>
 
+  <div class="search-wrap">
+    <input type="text" id="search-input" class="search-input" placeholder="Buscar produto..." oninput="searchProducts(this.value)">
+    <span class="search-icon">🔍</span>
+  </div>
+  
   <div class="header-right">
     <button class="cart-btn" onclick="toggleCart()" title="Carrinho">
       🛒
@@ -1689,6 +1727,24 @@ function goHome() {
 createStars();
 renderCards(document.getElementById('products-grid'), products);
 updateCartUI();
+
+function searchProducts(query) {
+  const q = query.toLowerCase().trim();
+  const filtered = q === '' ? products : products.filter(p =>
+    p.name.toLowerCase().includes(q) ||
+    p.brand.toLowerCase().includes(q)
+  );
+  goHome();
+  setTimeout(() => {
+    renderCards(document.getElementById('products-grid'), filtered);
+    if (filtered.length === 0) {
+      document.getElementById('products-grid').innerHTML =
+        '<p style="color:var(--gray-mid);text-align:center;padding:40px;grid-column:1/-1">Nenhum produto encontrado para "<strong style="color:var(--white)">' + query + '</strong>"</p>';
+    }
+    document.getElementById('produtos').scrollIntoView({ behavior: 'smooth' });
+  }, 100);
+}
+  
 </script>
 </body>
 </html>
