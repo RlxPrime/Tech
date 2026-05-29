@@ -1657,11 +1657,7 @@ function openProduct(id) {
   document.getElementById('detail-price-old').textContent = p.priceOld;
   document.getElementById('detail-price-new').textContent = p.priceNew;
 
-  const priceNum = parseFloat(p.priceNew.replace('R$ ','').replace(',','.'));
-  const parcelas = parseInt(p.qty);
-  const valorParc = (priceNum / parcelas).toFixed(2).replace('.',',');
-  document.getElementById('detail-installments').textContent =
-    `${parcelas}x de R$ ${valorParc} com juros no cartão`;
+
 
   document.getElementById('detail-desc').textContent = p.desc;
 
