@@ -1256,7 +1256,7 @@ const products = [
     priceOld: 'R$ 69,98',
     priceNew: 'R$ 39,00',
     discount: '-44%',
-    qty: '3x',
+    qty: '12x',
     waText: 'Olá! Tenho interesse no Fone Bluetooth TWS Xiaomi Redmi AirDots Pro.',
     desc: 'Fone de ouvido True Wireless Xiaomi Mi AirDots Pro com case de carregamento. Conexão estável, design leve e ergonômico, bateria de longa duração e microfone embutido para chamadas. Compatível com Android e iPhone.',
     specs: [
@@ -1277,7 +1277,7 @@ const products = [
     priceOld: 'R$ 35,90',
     priceNew: 'R$ 22,99',
     discount: '-36%',
-    qty: '3x',
+    qty: '12x',
     waText: 'Olá! Tenho interesse no Suporte Universal Fixo para Smart TV LED/LCD 10 a 100 Polegadas.',
     desc: 'Suporte universal fixo para Smart TV LED/LCD compatível com televisores de 10 a 100 polegadas. Instalação fácil e rápida, com excelente fixação e acabamento profissional. Ideal para qualquer ambiente, garante segurança e praticidade para sua TV.',
     specs: [
@@ -1297,7 +1297,7 @@ const products = [
     priceOld: 'R$ 34,90',
     priceNew: 'R$ 20,00',
     discount: '-43%',
-    qty: '3x',
+    qty: '12x',
     waText: 'Olá! Tenho interesse no Adaptador Transmissor Bluetooth FM X8 para Carro.',
     desc: 'Transmissor FM Bluetooth X8 para carro com entrada USB e leitor de Pen Drive. Conecte seu celular via Bluetooth e ouça música com som de alta qualidade pelo rádio do carro. Possui carregador USB embutido e display LED para visualização da frequência.',
     specs: [
@@ -1317,7 +1317,7 @@ const products = [
     priceOld: 'R$ 30,00',
     priceNew: 'R$ 23,98',
     discount: '-20%',
-    qty: '2x',
+    qty: '12x',
     waText: 'Olá! Tenho interesse no Carregador Completo Apple.',
     desc: 'Kit carregador completo para iPhone com adaptador de tomada 20W e cabo Lightning 1 metro. Compatível com todos os modelos de iPhone. Carregamento rápido que leva o dispositivo a 50% em apenas 30 minutos.',
     specs: [
@@ -1337,7 +1337,7 @@ const products = [
     priceOld: 'R$ 119,97',
     priceNew: 'R$ 105,00',
     discount: '-12%',
-    qty: '3x',
+    qty: '12x',
     waText: 'Olá! Tenho interesse na Caixa de Som Inova 10W.',
     desc: 'Caixa de som portátil Bluetooth com 10W de potência e graves poderosos. Resistente a respingos (IPX5), bateria de longa duração com até 8 horas de reprodução contínua. Design compacto e moderno.',
     specs: [
@@ -1357,7 +1357,7 @@ const products = [
     priceOld: 'R$ 128,00',
     priceNew: 'R$ 46,90',
     discount: '-63%',
-    qty: '8x',
+    qty: '12x',
     waText: 'Olá! Tenho interesse no Fone Bluetooth I13.',
     desc: 'Fone de ouvido intra-auricular sem fio com case de carregamento. Cancelamento de ruído passivo, microfone embutido para chamadas cristalinas e toque suave para controle de música e chamadas.',
     specs: [
@@ -1377,7 +1377,7 @@ const products = [
     priceOld: 'R$ 89,98',
     priceNew: 'R$ 80,50',
     discount: '-10%',
-    qty: '2x',
+    qty: '12x',
     waText: 'Olá! Tenho interesse na Câmera Lâmpada Inova.',
     desc: 'Câmera de segurança disfarçada em lâmpada LED. Instalação simples em qualquer bocal E27, monitoramento via app pelo celular, visão 360° e gravação em loop no cartão SD.',
     specs: [
@@ -1397,7 +1397,7 @@ const products = [
     priceOld: 'R$ 109,98',
     priceNew: 'R$ 78,00',
     discount: '-29%',
-    qty: '2x',
+    qty: '12x',
     waText: 'Olá! Tenho interesse na Escova Secadora ANJ.GG.',
     desc: 'Escova secadora rotativa com cerdas de nylon macias que modelam e secam o cabelo ao mesmo tempo. Reduz o volume, elimina o frizz e deixa o cabelo liso e brilhoso.',
     specs: [
@@ -1417,7 +1417,7 @@ const products = [
     priceOld: 'R$ 89,98',
     priceNew: 'R$ 75,60',
     discount: '-16%',
-    qty: '2x',
+    qty: '12x',
     waText: 'Olá! Tenho interesse no Smartwatch T800 Ultra.',
     desc: 'Smartwatch com tela infinita AMOLED de 1.99", múltiplos modos esportivos, monitor de frequência cardíaca, oxímetro SpO2, GPS integrado e chamadas Bluetooth diretamente pelo relógio.',
     specs: [
@@ -1437,7 +1437,7 @@ const products = [
     priceOld: 'R$ 39,98',
     priceNew: 'R$ 25,00',
     discount: '-37%',
-    qty: '2x',
+    qty: '12x',
     waText: 'Olá! Tenho interesse no Controle Remoto LG Smart TV Universal (M&S-8037) com Pilhas + Adaptador T.',
     desc: 'Promoção Comprou Ganhou! Kit completo com Controle Remoto LG M&S-8037 compatível com Smart TV LED, LCD, OLED e 4K + 2 Pilhas AAA + Adaptador de Tomada T. Pronto para usar, é só colocar as pilhas e aproveitar!',
     specs: [
@@ -1651,7 +1651,7 @@ function openProduct(id) {
   };
 
   document.getElementById('detail-badge-disc').textContent = p.discount;
-  document.getElementById('detail-badge-qty').textContent = p.qty + ' sem juros';
+  document.getElementById('detail-badge-qty').textContent = p.qty + ' com juros';
   document.getElementById('detail-brand').textContent = p.brand;
   document.getElementById('detail-name').textContent = p.name;
   document.getElementById('detail-price-old').textContent = p.priceOld;
@@ -1661,7 +1661,7 @@ function openProduct(id) {
   const parcelas = parseInt(p.qty);
   const valorParc = (priceNum / parcelas).toFixed(2).replace('.',',');
   document.getElementById('detail-installments').textContent =
-    `${parcelas}x de R$ ${valorParc} sem juros no cartão`;
+    `${parcelas}x de R$ ${valorParc} com juros no cartão`;
 
   document.getElementById('detail-desc').textContent = p.desc;
 
