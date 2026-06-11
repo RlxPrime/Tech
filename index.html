@@ -751,6 +751,239 @@
     .search-wrap { display: none; }
   }
 
+  /* ─── HAMBURGER BUTTON ─── */
+  .hamburger-btn {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px;
+    background: rgba(0,180,255,0.1);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 40px; height: 40px;
+    cursor: pointer; flex-shrink: 0;
+    transition: background .2s;
+  }
+  .hamburger-btn span {
+    display: block; width: 18px; height: 2px;
+    background: var(--blue-glow); border-radius: 2px;
+    transition: transform .25s, opacity .25s;
+  }
+  .hamburger-btn:hover { background: rgba(0,180,255,0.2); }
+
+  /* ─── MOBILE SEARCH BUTTON ─── */
+  .mobile-search-btn {
+    display: none;
+    background: rgba(0,180,255,0.1);
+    border: 1px solid var(--border);
+    color: var(--blue-glow);
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    cursor: pointer; font-size: 1rem;
+    align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background .2s;
+  }
+  .mobile-search-btn:hover { background: rgba(0,180,255,0.2); }
+
+  /* ─── MOBILE NAV DRAWER ─── */
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 190;
+    opacity: 0;
+    transition: opacity .25s;
+  }
+  .mobile-nav-overlay.open { opacity: 1; pointer-events: all; }
+
+  .mobile-nav {
+    position: fixed; top: 0; right: 0;
+    width: 72vw; max-width: 280px; height: 100vh;
+    background: rgba(2,12,30,0.98);
+    border-left: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    z-index: 191;
+    display: flex; flex-direction: column;
+    padding: 80px 0 40px;
+    transform: translateX(100%);
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+  }
+  .mobile-nav.open { transform: translateX(0); }
+  .mobile-nav a {
+    display: block;
+    padding: 16px 28px;
+    color: var(--gray-light);
+    text-decoration: none;
+    font-size: 1rem; font-weight: 600;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(0,180,255,0.07);
+    transition: color .2s, background .2s;
+    cursor: pointer;
+  }
+  .mobile-nav a:hover { color: var(--accent); background: rgba(0,180,255,0.07); }
+
+  /* ─── MOBILE SEARCH BAR ─── */
+  .mobile-search-bar {
+    position: fixed; top: 60px; left: 0; right: 0;
+    background: rgba(2,12,30,0.97);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+    z-index: 199;
+    padding: 12px 1rem;
+    transform: translateY(-110%);
+    transition: transform .3s ease;
+  }
+  .mobile-search-bar.open { transform: translateY(0); }
+  .mobile-search-inner { display: flex; gap: 8px; align-items: center; }
+  .mobile-search-input {
+    flex: 1;
+    background: rgba(0,180,255,0.08);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+  }
+  .mobile-search-input:focus { border-color: var(--blue-glow); }
+  .mobile-search-input::placeholder { color: var(--gray-mid); }
+  .mobile-search-close {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    color: var(--gray-mid);
+    width: 36px; height: 36px; border-radius: 8px;
+    cursor: pointer; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: color .2s;
+  }
+  .mobile-search-close:hover { color: #fff; }
+
+  /* ══════════════════════════════════════════
+     MOBILE RESPONSIVE — max-width: 768px
+  ══════════════════════════════════════════ */
+  @media (max-width: 768px) {
+
+    /* ─── HEADER ─── */
+    header {
+      padding: 0 1rem;
+      height: 60px;
+      gap: 8px;
+    }
+    nav { display: none; }
+    .hamburger-btn { display: flex; }
+    .mobile-search-btn { display: flex; }
+    .mobile-nav-overlay { display: block; pointer-events: none; }
+    .logo-tech { font-size: 1rem; letter-spacing: 1.5px; }
+    .logo-express { font-size: 0.6rem; letter-spacing: 3px; }
+    .logo-icon { width: 38px; height: 38px; font-size: 1.2rem; }
+    .btn-contact { display: none; } /* "Fale Conosco" some — tem o float WA */
+    .cart-btn { width: 40px; height: 40px; font-size: 1.1rem; }
+    .header-right { gap: 8px; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: auto;
+      padding: 48px 1.2rem 40px;
+    }
+    .hero h1 { font-size: clamp(1.7rem, 8vw, 2.4rem); }
+    .hero p { font-size: 0.95rem; }
+    .hero-ctas { flex-direction: column; align-items: center; gap: 10px; }
+    .btn-primary, .btn-outline {
+      width: 100%; max-width: 300px;
+      justify-content: center;
+      padding: 13px 20px;
+    }
+
+    /* ─── ROCKET (esconde no mobile pra não sobrepo hero) ─── */
+    .rocket-launch, .rocket-launch-2 { display: none; }
+
+    /* ─── STATS ─── */
+    .stats-inner { gap: 10px; }
+    .stat-num { font-size: 1.3rem; }
+    .stat-label { font-size: 0.7rem; }
+
+    /* ─── SECTION HEADER ─── */
+    .section-header { padding: 40px 1rem 24px; }
+
+    /* ─── PRODUCTS GRID ─── */
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 12px 0.8rem 48px;
+    }
+    .product-img-wrap { height: 150px; }
+    .product-info { padding: 12px 12px 14px; }
+    .product-name { font-size: 0.82rem; min-height: 3.4em; }
+    .price-new { font-size: 1rem; }
+    .price-old { font-size: 0.72rem; }
+    .btn-buy { font-size: 0.75rem; padding: 9px 6px; }
+    .btn-add-cart { width: 36px; font-size: 0.95rem; }
+    .badge-discount, .badge-qty { font-size: 0.6rem; padding: 3px 7px; }
+
+    /* ─── FEATURES ─── */
+    .features { padding: 40px 1rem; }
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .feature-item { padding: 20px 14px; }
+    .feature-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .feature-title { font-size: 0.75rem; }
+    .feature-desc { font-size: 0.78rem; }
+
+    /* ─── CTA CONTATO ─── */
+    .cta-contact { padding: 48px 1rem; }
+    .cta-box { padding: 32px 20px; }
+    .cta-box h2 { font-size: 1.3rem; }
+    .cta-phone { font-size: 1rem; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+    .btn-whatsapp, .btn-instagram {
+      width: 100%; max-width: 300px;
+      justify-content: center;
+      padding: 13px 20px;
+    }
+
+    /* ─── PRODUTO DETALHE ─── */
+    .back-btn { margin: 20px 0 0 1rem; }
+    .product-detail {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 0 1rem;
+      margin: 20px auto;
+    }
+    .detail-img-wrap { height: 260px; }
+    .detail-name { font-size: clamp(1.1rem, 5vw, 1.6rem); }
+    .detail-price-new { font-size: 1.6rem; }
+    .detail-price-old { font-size: 0.9rem; }
+
+    /* ─── RELATED GRID ─── */
+    .related-section { padding: 0 1rem 48px; }
+    #related-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 12px !important;
+    }
+
+    /* ─── CART PANEL ─── */
+    .cart-panel { width: 100vw; }
+
+    /* ─── FLOAT WA ─── */
+    .float-whatsapp { bottom: 18px; right: 18px; width: 52px; height: 52px; }
+
+    /* ─── FOOTER ─── */
+    footer { padding: 28px 1rem 20px; }
+    .footer-links { gap: 14px; }
+  }
+
+  /* ─── Telas muito pequenas (< 380px) ─── */
+  @media (max-width: 380px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .logo-express { display: none; }
+  }
+
   /* ─── FOOTER ─── */
   footer {
     background: rgba(0,10,25,0.9);
@@ -1030,6 +1263,7 @@
   </div>
   
   <div class="header-right">
+    <button class="mobile-search-btn" onclick="toggleMobileSearch()" title="Buscar" aria-label="Buscar">🔍</button>
     <button class="cart-btn" onclick="toggleCart()" title="Carrinho">
       🛒
       <span class="cart-count" id="cart-count">0</span>
@@ -1037,8 +1271,28 @@
     <a href="https://wa.me/5534984373191" target="_blank" class="btn-contact">
       📲 Fale Conosco
     </a>
+    <button class="hamburger-btn" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- ─── MOBILE NAV DRAWER ─── -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="toggleMobileNav()"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <a onclick="toggleMobileNav(); goHome(); setTimeout(()=>document.getElementById('produtos').scrollIntoView({behavior:'smooth'}),150)">⚡ Produtos</a>
+  <a onclick="toggleMobileNav(); goHome(); setTimeout(()=>document.getElementById('vantagens').scrollIntoView({behavior:'smooth'}),150)">✅ Vantagens</a>
+  <a onclick="toggleMobileNav(); goHome(); setTimeout(()=>document.getElementById('contato').scrollIntoView({behavior:'smooth'}),150)">📞 Contato</a>
+  <a href="https://wa.me/5534984373191" target="_blank" onclick="toggleMobileNav()">💬 WhatsApp</a>
+</nav>
+
+<!-- ─── MOBILE SEARCH BAR ─── -->
+<div class="mobile-search-bar" id="mobile-search-bar">
+  <div class="mobile-search-inner">
+    <input type="text" id="mobile-search-input" class="mobile-search-input" placeholder="Buscar produto..." oninput="searchProducts(this.value); document.getElementById('search-input').value=this.value">
+    <button class="mobile-search-close" onclick="toggleMobileSearch()">✕</button>
+  </div>
+</div>
 
 <!-- ─── CART OVERLAY ─── -->
 <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
@@ -1692,6 +1946,25 @@ function goHome() {
   document.getElementById('product-page').style.display = 'none';
   document.getElementById('main-page').style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── MOBILE NAV ─────────────────────────────────────────
+function toggleMobileNav() {
+  const nav = document.getElementById('mobile-nav');
+  const overlay = document.getElementById('mobile-nav-overlay');
+  const isOpen = nav.classList.contains('open');
+  nav.classList.toggle('open', !isOpen);
+  overlay.classList.toggle('open', !isOpen);
+}
+
+// ─── MOBILE SEARCH ───────────────────────────────────────
+function toggleMobileSearch() {
+  const bar = document.getElementById('mobile-search-bar');
+  const isOpen = bar.classList.contains('open');
+  bar.classList.toggle('open', !isOpen);
+  if (!isOpen) {
+    setTimeout(() => document.getElementById('mobile-search-input').focus(), 100);
+  }
 }
 
 // ─── INIT ────────────────────────────────────────────────
